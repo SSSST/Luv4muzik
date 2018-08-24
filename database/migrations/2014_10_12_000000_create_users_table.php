@@ -15,9 +15,11 @@ class CreateUsersTable extends Migration
     {
         Schema::create('users', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('name');
+            $table->string('name')->unique();
             $table->string('email')->unique();
             $table->string('password');
+            $table->string('brief');//简介
+            $table->boolean('is_musician')->default(false);//是否为音乐人
             $table->rememberToken();
             $table->timestamps();
         });
