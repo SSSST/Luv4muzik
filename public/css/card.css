@@ -1,0 +1,13 @@
+.tit {
+    float: left;
+    font-size: 15px;
+    font-weight: normal;
+    line-height: 20px;
+    color: #212529;
+}
+.f-tdn, .f-tdn:hover {
+    text-decoration: none;
+}
+.f-ff2 {
+    font-family: "Microsoft Yahei", Arial, Helvetica, sans-serif;
+}

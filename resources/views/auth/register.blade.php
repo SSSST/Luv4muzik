@@ -1,4 +1,5 @@
 @extends('layouts.app')
+@section('title', '注册')
 
 @section('content')
 <div class="container">
@@ -8,6 +9,7 @@
                 <div class="card-header">{{ __('注册') }}</div>
 
                 <div class="card-body">
+                    @include('shared._errors')
                     <form method="POST" action="{{ route('register') }}" aria-label="{{ __('Register') }}">
                         @csrf
 
@@ -16,12 +18,6 @@
 
                             <div class="col-md-6">
                                 <input id="name" type="text" class="form-control{{ $errors->has('name') ? ' is-invalid' : '' }}" name="name" value="{{ old('name') }}" required autofocus>
-
-                                @if ($errors->has('name'))
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $errors->first('name') }}</strong>
-                                    </span>
-                                @endif
                             </div>
                         </div>
 
@@ -30,12 +26,6 @@
 
                             <div class="col-md-6">
                                 <input id="email" type="email" class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" name="email" value="{{ old('email') }}" required>
-
-                                @if ($errors->has('email'))
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $errors->first('email') }}</strong>
-                                    </span>
-                                @endif
                             </div>
                         </div>
 
@@ -58,6 +48,14 @@
 
                             <div class="col-md-6">
                                 <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required>
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label for="brief" class="col-md-4 col-form-label text-md-right">{{ __('个人介绍') }}</label>
+
+                            <div class="col-md-6">
+                                <textarea id="brief" type="text" class="form-control" name="brief" required></textarea>
                             </div>
                         </div>
 

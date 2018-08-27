@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+use App\Models\User;
 
 class HomeController extends Controller
 {
@@ -23,6 +25,8 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        $users = DB::table('users')->select('*')->inRandomOrder()->take(5)->get();//随机选取三个
+        // dd($users);
+        return view('home', compact('users'));
     }
 }

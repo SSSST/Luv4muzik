@@ -26,3 +26,13 @@
 .jumbotron .container {
   max-width: 40rem;
 }
+
+.pull-right {
+float: right;
+}
+
+label {
+    display: inline-block;
+    margin-bottom: .5rem;
+    float: left;
+}

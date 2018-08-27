@@ -8,7 +8,7 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'Luv4muzik') }}</title>
+    <title>@yield('title', 'Luv4muzik') -I just hope you listen</title>
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
@@ -25,6 +25,7 @@
         @include('layouts._nav')
 
         <main class="py-4">
+            @include('shared._message')
             @yield('content')
         </main>
     </div>

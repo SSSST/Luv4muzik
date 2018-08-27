@@ -1,4 +1,5 @@
 @extends('layouts.app')
+@section('title', $user->name)
 
 @section('content')
 <link href="{{ asset('css/profiles.css') }}" rel="stylesheet">
@@ -7,8 +8,8 @@
     <div class="container">
         <h1 class="jumbotron-heading">{{ $user->name }}</h1>
         <p class="lead text-muted">{{ $user->brief }}<p>
-            <a href="#" class="btn btn-primary my-2">Main call to action</a>
-            <a href="#" class="btn btn-secondary my-2">Secondary action</a>
+            <!-- 个人资料设置 -->
+            @include('users._button')
         </p>
     </div>
 </section>
