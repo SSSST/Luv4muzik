@@ -25,7 +25,7 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $users = DB::table('users')->select('*')->inRandomOrder()->take(5)->get();//随机选取三个
+        $users = DB::table('users')->select('*')->inRandomOrder()->take(5)->get();//随机选取五个
         // dd($users);
         return view('home', compact('users'));
     }

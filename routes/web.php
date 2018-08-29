@@ -2,7 +2,7 @@
 
 
 
-Route::get('/', 'HomeController@index')->name('home.index');//主页
+Route::get('/', 'HomeController@index')->name('home');//主页
 
 //用户相关
 {

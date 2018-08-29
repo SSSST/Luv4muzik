@@ -10,15 +10,15 @@ class UsersController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('auth')->except(['show']);
+        $this->middleware('auth')->except(['show', 'index']);
     }
 
-    public function show(User $user)
+    public function show(User $user)//展示个人主页
     {
         return view('users.show', compact('user'));
     }
 
-    public function edit(User $user)
+    public function edit(User $user)//编辑资料页面
     {
         $this->authorize('update', $user);
 
@@ -29,7 +29,7 @@ class UsersController extends Controller
         return view('users.edit', compact('user'));
     }
 
-    public function update(User $user, Request $request)
+    public function update(User $user, Request $request)//更新个人介绍
     {
         $this->authorize('update', $user);
 
@@ -44,7 +44,7 @@ class UsersController extends Controller
         return redirect()->route('users.show', $user->id);
     }
 
-    public function password(User $user, Request $request)
+    public function password(User $user, Request $request)//更新密码
     {
         $this->authorize('update', $user);
 
@@ -59,5 +59,12 @@ class UsersController extends Controller
         } else {
             return back()->with('danger', '旧密码输入错误');
         }
+    }
+
+    public function index()//全部用户
+    {
+        $users = User::latest()->paginate(10);
+
+        return view('users.index', compact('users'))->with('active', 1);
     }
 }
