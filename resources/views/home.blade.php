@@ -24,10 +24,10 @@
 
         <div class="col-md-3">
             <div class="card">
-                <div class="card-header"><a href="{{ route('users.index') }}" class="tit f-ff2 f-tdn">推荐音乐人</a></div>
+                <div class="card-header"><a href="{{ route('musicians.index') }}" class="tit f-ff2 f-tdn">推荐音乐人</a></div>
 
                 <div class="card-body">
-                    @include('users.showusers')
+                    @include('musicians.showmusicians')
                 </div>
             </div>
         </div>

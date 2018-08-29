@@ -2,7 +2,7 @@
 <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#updateBrief">
     修改个人介绍
 </button>
-<a href="#" class="btn btn-secondary my-2">成为音乐人</a>
+<a href="{{ route('users.singer', $user) }}" class="btn btn-secondary my-2">成为音乐人</a>
 
 <!-- Modal -->
 <div class="modal fade" id="updateBrief" role="dialog" tabindex="-1"aria-labelledby="updateBriefLabel" aria-hidden="true">

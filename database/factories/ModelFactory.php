@@ -26,3 +26,17 @@ $factory->define(App\Models\User::class, function (Faker $faker) {
         'updated_at' => $date,
     ];
 });
+
+$factory->define(App\Models\Musician::class, function (Faker $faker) {
+    $date = $faker->date . $faker->time;
+
+    return [
+        'user_id' => function() {
+            return factory('App\Models\User')->create(['is_musician' => 1])->id;
+        },
+        'name' => $faker->name,
+        'brief' => $faker->sentence,
+        'created_at' => $date,
+        'updated_at' => $date,
+    ];
+});

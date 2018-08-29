@@ -67,4 +67,9 @@ class UsersController extends Controller
 
         return view('users.index', compact('users'))->with('active', 1);
     }
+
+    public function singer(User $user)//成为音乐人
+    {
+        return view('users.becomeSinger', compact('user'));
+    }
 }

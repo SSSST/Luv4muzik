@@ -20,7 +20,6 @@ class CreateMusiciansTable extends Migration
             $table->boolean('is_active')->default(false);//是否认证
             $table->boolean('can_be_edited')->default(true);//是否允许他人编辑
             $table->string('brief');//简介
-            $table->text('body');//详细介绍
             $table->timestamps();
         });
     }
