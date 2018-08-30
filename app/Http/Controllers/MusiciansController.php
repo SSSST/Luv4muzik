@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Musician;
+use App\Models\Song;
 
 class MusicianController extends Controller
 {
@@ -16,8 +17,9 @@ class MusicianController extends Controller
 
     public function show(Musician $musician)//音乐人主页
     {
-        // dd($musician);
-        return view('musicians.show', compact('musician'));
+        $songs = Song::where('songs.musician_id', $musician->id)->get();
+        // dd($songs);
+        return view('musicians.show', compact('musician', 'songs'));
     }
 
     public function update(Request $request, Musician $musician)//修改音乐人介绍

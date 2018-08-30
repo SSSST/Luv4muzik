@@ -12,6 +12,6 @@ class MusicianPolicy
 
     public function update(User $currentUser, Musician $musician)
     {
-        return $currentUser->musician->id === $musician->id;//当前登录用户和需授权用户是否一样
+        return $currentUser->is_musician && ($currentUser->musician->id === $musician->id);//当前登录用户和需授权用户是否一样
     }
 }

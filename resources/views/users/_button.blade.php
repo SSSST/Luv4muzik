@@ -4,8 +4,11 @@
     修改个人介绍
 </button>
 @endcan
+
 @if(! $user->is_musician)
-    <a href="{{ route('users.singer', $user) }}" class="btn btn-secondary my-2">成为音乐人</a>
+    @if(Auth::check() && $user->id == Auth::user()->id)
+        <a href="{{ route('users.singer', $user) }}" class="btn btn-secondary my-2">成为音乐人</a>
+    @endif
 @else
     <a href="{{ route('musicians.show', $user->musician) }}" class="btn btn-secondary my-2">音乐人主页</a>
 @endif

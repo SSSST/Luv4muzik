@@ -23,3 +23,8 @@ Route::get('/', 'HomeController@index')->name('home');//主页
     Route::patch('/musicians/{musician}', 'MusicianController@update')->name('musicians.update');//提交修改
     //Route::get('/singers/create', 'SingersController@create')->name('singers.create');//添加音乐人
 }
+
+//作品相关
+{
+    Route::get('/songs/{song}', 'SongsController@show')->name('songs.show');//展示作品
+}

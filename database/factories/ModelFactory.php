@@ -40,3 +40,18 @@ $factory->define(App\Models\Musician::class, function (Faker $faker) {
         'updated_at' => $date,
     ];
 });
+
+$factory->define(App\Models\Song::class, function (Faker $faker) {
+    $date = $faker->date . $faker->time;
+
+    return [
+        'musician_id' => function() {
+            return factory('App\Models\User')->create()->id;
+        },
+        'name' => $faker->name,
+        'brief' => $faker->sentence,
+        'lyric' => $faker->text,
+        'created_at' => $date,
+        'updated_at' => $date,
+    ];
+});
