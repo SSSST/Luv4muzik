@@ -18,6 +18,8 @@ Route::get('/', 'HomeController@index')->name('home');//主页
 
 //音乐人相关
 {
-    Route::get('/singers', 'MusicianController@index')->name('musicians.index');//所有音乐人
+    Route::get('/musicians', 'MusicianController@index')->name('musicians.index');//所有音乐人
+    Route::get('/musicians/{musician}', 'MusicianController@show')->name('musicians.show');//音乐人主页
+    Route::patch('/musicians/{musician}', 'MusicianController@update')->name('musicians.update');//提交修改
     //Route::get('/singers/create', 'SingersController@create')->name('singers.create');//添加音乐人
 }

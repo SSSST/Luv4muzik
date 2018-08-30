@@ -6,5 +6,10 @@ use Illuminate\Database\Eloquent\Model;
 
 class Musician extends Model
 {
-    //
+    protected $fillable = ['name', 'brief'];
+
+    public function user()
+    {
+        return $this->belongsTo('App\Models\User');
+    }
 }

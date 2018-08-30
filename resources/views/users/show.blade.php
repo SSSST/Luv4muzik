@@ -9,9 +9,7 @@
         <h1 class="jumbotron-heading">{{ $user->name }}</h1>
         <p class="lead text-muted">{{ $user->brief }}<p>
             <!-- 个人资料设置 -->
-            @can('update', $user)
-                @include('users._button')
-            @endcan
+            @include('users._button')
         </p>
     </div>
 </section>

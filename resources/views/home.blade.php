@@ -29,6 +29,10 @@
                 <div class="card-body">
                     @include('musicians.showmusicians')
                 </div>
+
+                <div class="card-footer">
+                    <a href="#"><span class="badge badge-secondary">添加音乐人</span></a>
+                </div>
             </div>
         </div>
     </div>
