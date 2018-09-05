@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\User;
+use App\Models\Musician;
 use Hash;
 
 class UsersController extends Controller
@@ -68,8 +69,41 @@ class UsersController extends Controller
         return view('users.index', compact('users'))->with('active', 1);
     }
 
-    public function singer(User $user)//成为音乐人
+    public function musician(User $user)//成为音乐人
     {
         return view('users.becomeSinger', compact('user'));
+    }
+
+    public function musicianStore(Request $request, User $user)//提交申请
+    {
+        $this->validate($request, [
+            'name' => 'required|string|max:30',
+            'brief' => 'required|string|max:30'
+        ]);
+        // dd($request);
+        $can_be_edited = $request->can_be_edited ? 1 : 0;
+        
+        if ($musician = Musician::where('name', $request->name)->first()){
+            $musician->update([
+                'name' => $request->name,
+                'brief' => $request->brief,
+                'can_be_edited' => $can_be_edited
+            ]);
+        } else {
+            $musician = Musician::create([
+                'name' => $request->name,
+                'brief' => $request->brief,
+                'can_be_edited' => $request->can_be_edited
+            ]);
+        }
+
+        $musician->user_id = $user->id;
+        $musician->is_active = 1;
+        $musician->save();
+
+        $user->is_musician = 1;
+        $user->save();
+
+        return redirect()->route('musicians.show', $musician);
     }
 }

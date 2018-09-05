@@ -7,7 +7,7 @@
 
 @if(! $user->is_musician)
     @if(Auth::check() && $user->id == Auth::user()->id)
-        <a href="{{ route('users.singer', $user) }}" class="btn btn-secondary my-2">成为音乐人</a>
+        <a href="{{ route('users.musician', $user) }}" class="btn btn-secondary my-2">成为音乐人</a>
     @endif
 @else
     <a href="{{ route('musicians.show', $user->musician) }}" class="btn btn-secondary my-2">音乐人主页</a>

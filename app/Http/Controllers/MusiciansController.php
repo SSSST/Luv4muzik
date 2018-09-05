@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Musician;
 use App\Models\Song;
 
-class MusicianController extends Controller
+class MusiciansController extends Controller
 {
     public function index()//所有音乐人
     {
@@ -33,6 +33,26 @@ class MusicianController extends Controller
         $musician->update(['brief' => request('brief')]);
 
         session()->flash('success', '音乐人资料更新成功！');
+
+        return redirect()->route('musicians.show', $musician->id);
+    }
+
+    public function create()//创建音乐人
+    {
+        return view('musicians.create');
+    }
+
+    public function store(Request $request)//储存音乐人
+    {
+        $this->validate($request, [
+            'name' => 'required|unique:musicians|string|max:30',
+            'brief' => 'required|string|max:30'
+        ]);
+
+        $musician = Musician::create([
+            'name' => $request->name,
+            'brief' => $request->brief
+        ]);
 
         return redirect()->route('musicians.show', $musician->id);
     }

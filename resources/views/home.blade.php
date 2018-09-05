@@ -32,7 +32,7 @@
 
                 @if(Auth::check())
                     <div class="card-footer">
-                        <a href="#"><span class="badge badge-secondary">添加音乐人</span></a>
+                        <a href="{{ route('musicians.create') }}"><span class="badge badge-secondary">添加音乐人</span></a>
                     </div>
                 @endif
             </div>
