@@ -24,9 +24,12 @@ Route::get('/', 'HomeController@index')->name('home');//主页
     Route::post('/musicians/store', 'MusiciansController@store')->name('musicians.store');//储存音乐人
     Route::get('/musicians/{musician}', 'MusiciansController@show')->name('musicians.show');//音乐人主页
     Route::patch('/musicians/{musician}', 'MusiciansController@update')->name('musicians.update');//提交修改
+    Route::get('/musicians/{musician}/can-be-edited', 'MusiciansController@canBeEdited')->name('musicians.canBeEdited');//修改can_be_edited
 }
 
 //作品相关
 {
+    Route::get('/songs/{musician}/create', 'SongsController@create')->name('songs.create');//添加作品
+    Route::post('/songs/{musician}/store', 'SongsController@store')->name('songs.store');//添加作品
     Route::get('/songs/{song}', 'SongsController@show')->name('songs.show');//展示作品
 }

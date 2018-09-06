@@ -56,4 +56,11 @@ class MusiciansController extends Controller
 
         return redirect()->route('musicians.show', $musician->id);
     }
+
+    public function canBeEdited(Musician $musician)//修改can_be_edited
+    {
+        $musician->changeEdit();
+
+        return redirect()->route('musicians.show', $musician);
+    }
 }

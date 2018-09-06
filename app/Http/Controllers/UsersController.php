@@ -80,9 +80,9 @@ class UsersController extends Controller
             'name' => 'required|string|max:30',
             'brief' => 'required|string|max:30'
         ]);
-        // dd($request);
-        $can_be_edited = $request->can_be_edited ? 1 : 0;
         
+        $can_be_edited = $request->can_be_edited ? 1 : 0;
+
         if ($musician = Musician::where('name', $request->name)->first()){
             $musician->update([
                 'name' => $request->name,
@@ -93,7 +93,7 @@ class UsersController extends Controller
             $musician = Musician::create([
                 'name' => $request->name,
                 'brief' => $request->brief,
-                'can_be_edited' => $request->can_be_edited
+                'can_be_edited' => $can_be_edited
             ]);
         }
 

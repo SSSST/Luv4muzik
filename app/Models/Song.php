@@ -6,7 +6,9 @@ use Illuminate\Database\Eloquent\Model;
 
 class Song extends Model
 {
-    public function musician()
+    public $fillable = ['name', 'brief', 'lyric',' musician_id'];
+
+    public function musician()//一个作品属于一个音乐人
     {
         return $this->belongsTo('App\Models\Musician');
     }

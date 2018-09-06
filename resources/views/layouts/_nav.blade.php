@@ -31,6 +31,9 @@
 
                         <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
                             <a class="dropdown-item" href="{{ route('users.show', auth()->id()) }}">{{ __('个人主页') }}</a>
+                            @if(Auth::user()->is_musician)
+                                <a class="dropdown-item" href="{{ route('musicians.show', Auth::user()->musician) }}">{{ __('音乐人主页') }}</a>
+                            @endif
                             <a class="dropdown-item" href="{{ route('users.edit', auth()->id()) }}">{{ __('修改密码') }}</a>
 
                             <a class="dropdown-item" href="{{ route('logout') }}"
