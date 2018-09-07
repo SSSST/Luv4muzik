@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Models\User;
+use App\Models\RecommendSong;
+use App\Models\Musician;
 
 class HomeController extends Controller
 {
@@ -21,8 +23,9 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $musicians = DB::table('musicians')->select('*')->inRandomOrder()->take(5)->get();//随机选取五个
-        // dd($users);
-        return view('home', compact('musicians'));
+        $musicians = Musician::inRandomOrder()->take(5)->get();//随机选取五个
+        $recommendSongs = RecommendSong::inRandomOrder()->take(5)->get();
+
+        return view('home')->with(compact('musicians', 'recommendSongs'));
     }
 }

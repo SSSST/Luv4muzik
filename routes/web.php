@@ -33,3 +33,9 @@ Route::get('/', 'HomeController@index')->name('home');//主页
     Route::post('/songs/{musician}/store', 'SongsController@store')->name('songs.store');//添加作品
     Route::get('/songs/{song}', 'SongsController@show')->name('songs.show');//展示作品
 }
+
+//推荐作品
+{
+    Route::get('/recommend-songs', 'RecommendSongsController@index')->name('recommendSongs.index');//所有推荐歌曲
+    Route::get('/recommend-songs/{recommendSong}', 'RecommendSongsController@show')->name('recommendSongs.show');//展示推荐作品
+}
