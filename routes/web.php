@@ -37,5 +37,7 @@ Route::get('/', 'HomeController@index')->name('home');//主页
 //推荐作品
 {
     Route::get('/recommend-songs', 'RecommendSongsController@index')->name('recommendSongs.index');//所有推荐歌曲
+    Route::get('/recommend-songs/create', 'RecommendSongsController@create')->name('recommendSongs.create');//添加推荐作品
+    Route::post('/recommend-songs/store', 'RecommendSongsController@store')->name('recommendSongs.store');//储存推荐作品
     Route::get('/recommend-songs/{recommendSong}', 'RecommendSongsController@show')->name('recommendSongs.show');//展示推荐作品
 }

@@ -14,16 +14,22 @@
                         还没有推荐歌曲哦~
                     @endif
                 </div>
+
+                @if(Auth::check())
+                    <div class="card-footer">
+                        <a href="{{ route('recommendSongs.create') }}"><span class="badge badge-secondary">添加推荐作品</span></a>
+                    </div>
+                @endif
             </div>
 
             </br>
-            <div class="card">
+            <!-- <div class="card">
                 <div class="card-header">推荐歌单</div>
 
                 <div class="card-body">
                     ...
                 </div>
-            </div>
+            </div> -->
         </div>
 
         <div class="col-md-3">

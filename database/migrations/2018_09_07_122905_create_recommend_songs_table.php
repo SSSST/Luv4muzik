@@ -19,6 +19,8 @@ class CreateRecommendSongsTable extends Migration
             $table->string('title');
             $table->string('brief');
             $table->text('body');
+            $table->string('song_name');//歌曲名
+            $table->integer('song_id')->nullable()->index();//推荐歌曲id
             $table->timestamps();
         });
     }

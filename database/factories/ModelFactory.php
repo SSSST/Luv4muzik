@@ -65,6 +65,7 @@ $factory->define(App\Models\RecommendSong::class, function (Faker $faker) {
         },
         'title' => $faker->title,
         'brief' => $faker->sentence,
+        'song_name' => $faker->title,
         'body' => $faker->text,
         'created_at' => $date,
         'updated_at' => $date,
