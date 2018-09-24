@@ -5,18 +5,21 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\User;
 use App\Models\Musician;
+use App\Models\RecommendSong;
 use Hash;
 
 class UsersController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('auth')->except(['show', 'index']);
+        $this->middleware('auth')->except(['show', 'index', 'recommendSongs']);//非登录可见
     }
 
     public function show(User $user)//展示个人主页
     {
-        return view('users.show', compact('user'));
+        $recommend_songs = RecommendSong::where('user_id', '=', $user->id)->inRandomOrder()->take(5)->get();
+
+        return view('users.show', compact('user', 'recommend_songs'));
     }
 
     public function edit(User $user)//编辑资料页面
@@ -80,7 +83,7 @@ class UsersController extends Controller
             'name' => 'required|string|max:30',
             'brief' => 'required|string|max:30'
         ]);
-        
+
         $can_be_edited = $request->can_be_edited ? 1 : 0;
 
         if ($musician = Musician::where('name', $request->name)->first()){
@@ -105,5 +108,12 @@ class UsersController extends Controller
         $user->save();
 
         return redirect()->route('musicians.show', $musician);
+    }
+
+    public function recommendSongs(User $user)//查看用户所有推荐
+    {
+        $recommend_songs = RecommendSong::where('user_id', '=', $user->id)->orderBy('created_at')->paginate(10);
+
+        return view('users.recommendSongs', compact('recommend_songs'));
     }
 }

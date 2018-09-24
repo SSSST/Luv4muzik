@@ -12,6 +12,7 @@ Route::get('/', 'HomeController@index')->name('home');//主页
     Route::get('/users/{user}/edit', 'UsersController@edit')->name('users.edit');//修改资料
     Route::patch('/users/{user}', 'UsersController@update')->name('users.update');//提交修改
     Route::patch('/users/{user}/password', 'UsersController@password')->name('users.password');//修改密码
+    Route::get('/users/{user}/recommend-songs', 'UsersController@recommendSongs')->name('users.recommendSongs');//用户的推荐目录
     Route::get('/users/{user}/musicians', 'UsersController@musician')->name('users.musician');//成为音乐人
     Route::post('/users/{user}/musicians/store', 'UsersController@musicianStore')->name('users.musicianStore');//成为音乐人
     // Route::delete('/users/{user}', 'UsersController@destroy')->name('users.destroy');
@@ -24,6 +25,7 @@ Route::get('/', 'HomeController@index')->name('home');//主页
     Route::post('/musicians/store', 'MusiciansController@store')->name('musicians.store');//储存音乐人
     Route::get('/musicians/{musician}', 'MusiciansController@show')->name('musicians.show');//音乐人主页
     Route::patch('/musicians/{musician}', 'MusiciansController@update')->name('musicians.update');//提交修改
+    Route::get('/musicians/{musician}/songs', 'MusiciansController@showSongs')->name('musicians.showSongs');//展示音乐人作品
     Route::get('/musicians/{musician}/can-be-edited', 'MusiciansController@canBeEdited')->name('musicians.canBeEdited');//修改can_be_edited
 }
 

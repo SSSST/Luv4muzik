@@ -6,15 +6,21 @@
 
 <div class="container">
     <div class="row justify-content-center">
-          <div class="">
-              <div class="jumbotron text-center">
-                  <h1 class="jumbotron-heading">{{ $user->name }}</h1>
-                  <p class="lead text-muted">{{ $user->brief }}<p>
-                      <!-- 个人资料设置 -->
-                      @include('users._button')
-                  </p>
+          <!-- 个人介绍 -->
+          @include('users.info')
+
+          <!-- 推荐目录 -->
+          <div class="col-md-10" style="margin-top: 10px;">
+              <div class="card">
+                  <div class="card-header">
+                      <a href="{{ route('users.recommendSongs', $user) }}" class="tit f-ff2 f-tdn">推荐目录</a>
+                  </div>
+
+                  <div class="card-body">
+                      @include('users.recommend')
+                  </div>
               </div>
           </div>
-      </div>
-  </div>
+    </div>
+</div>
 @endsection

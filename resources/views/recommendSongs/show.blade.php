@@ -6,7 +6,7 @@
     <div class="justify-content-center">
       <div class="bg-dark mr-md-3 pt-3 px-3 pt-md-5 px-md-5 text-center text-white overflow-hidden">
       <div class="my-3 py-3">
-        <h2 class="display-5">{{ $recommendSong->name }}</h2>
+        <h2 class="display-5">{{ $recommendSong->title }}</h2>
         <p class="lead">推荐人：<a href="{{ route('users.show', $recommendSong->user_id) }}" style="color:white">{{ $recommendSong->user->name}}</a></p>
         <p class="lead">推荐歌曲：
             @if($recommendSong->song_id)

@@ -8,6 +8,10 @@ use App\Models\Song;
 
 class MusiciansController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth')->except(['index', 'show', 'showSongs']);
+    }
     public function index()//所有音乐人
     {
         $musicians = Musician::latest()->paginate(10);
@@ -17,8 +21,8 @@ class MusiciansController extends Controller
 
     public function show(Musician $musician)//音乐人主页
     {
-        $songs = Song::where('songs.musician_id', $musician->id)->get();
-        // dd($songs);
+        $songs = Song::where('songs.musician_id', $musician->id)->inRandomOrder()->take(5)->get();
+
         return view('musicians.show', compact('musician', 'songs'));
     }
 
@@ -62,5 +66,12 @@ class MusiciansController extends Controller
         $musician->changeEdit();
 
         return redirect()->route('musicians.show', $musician);
+    }
+
+    public function showSongs(Musician $musician)//展示音乐人所有作品
+    {
+        $songs = Song::where('musician_id', '=', $musician->id)->orderBy('created_at')->paginate(10);
+
+        return view('musicians.showSongs', compact('songs'));
     }
 }
