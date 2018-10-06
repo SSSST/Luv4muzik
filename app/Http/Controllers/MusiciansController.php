@@ -31,7 +31,7 @@ class MusiciansController extends Controller
         $this->authorize('update', $musician);
 
         $this->validate($request, [
-            'brief' => 'string|max:30'
+            'brief' => 'string'
         ]);
 
         $musician->update(['brief' => request('brief')]);
@@ -50,7 +50,7 @@ class MusiciansController extends Controller
     {
         $this->validate($request, [
             'name' => 'required|unique:musicians|string|max:30',
-            'brief' => 'required|string|max:30'
+            'brief' => 'required'
         ]);
 
         $musician = Musician::create([

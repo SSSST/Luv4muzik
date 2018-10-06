@@ -20,6 +20,8 @@
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <link href="{{ asset('css/card.css') }}" rel="stylesheet">
+    <!-- 个人信息 -->
+    <link href="{{ asset('css/profiles.css') }}" rel="stylesheet">
 </head>
 <body>
     <div id="app">

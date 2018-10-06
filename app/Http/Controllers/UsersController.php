@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\User;
 use App\Models\Musician;
+use App\Models\Status;
 use App\Models\RecommendSong;
 use Hash;
 
@@ -18,8 +19,9 @@ class UsersController extends Controller
     public function show(User $user)//展示个人主页
     {
         $recommend_songs = RecommendSong::where('user_id', '=', $user->id)->inRandomOrder()->take(5)->get();
+        $statuses = Status::where('user_id', '=', $user->id)->orderBy('created_at', 'desc')->take(5)->get();
 
-        return view('users.show', compact('user', 'recommend_songs'));
+        return view('users.show', compact('user', 'recommend_songs', 'statuses'));
     }
 
     public function edit(User $user)//编辑资料页面

@@ -43,3 +43,10 @@ Route::get('/', 'HomeController@index')->name('home');//主页
     Route::post('/recommend-songs/store', 'RecommendSongsController@store')->name('recommendSongs.store');//储存推荐作品
     Route::get('/recommend-songs/{recommendSong}', 'RecommendSongsController@show')->name('recommendSongs.show');//展示推荐作品
 }
+
+//动态
+{
+    Route::get('/statuses/index', 'StatusesController@index')->name('statuses.index');//所有动态
+    Route::post('/statuses', 'StatusesController@store')->name('statuses.store');//保存动态
+    Route::delete('/statuses/{status}', 'StatusesController@destroy')->name('statuses.destroy');//删除动态
+}

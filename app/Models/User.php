@@ -14,4 +14,9 @@ class User extends Authenticatable
     {
         return $this->hasOne('App\Models\Musician', 'user_id');
     }
+
+    public function statuses()
+    {
+        return $this->hasMany('App\Models\Status');
+    }
 }

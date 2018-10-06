@@ -71,3 +71,16 @@ $factory->define(App\Models\RecommendSong::class, function (Faker $faker) {
         'updated_at' => $date,
     ];
 });
+
+$factory->define(App\Models\Status::class, function (Faker $faker) {
+    $date = $faker->date . $faker->time;
+
+    return [
+        'user_id' => function() {
+            return factory('App\Models\User')->create()->id;
+        },
+        'content' => $faker->text,
+        'created_at' => $date,
+        'updated_at' => $date,
+    ];
+});
