@@ -12,7 +12,7 @@
           <div class="col-md-10" style="margin-top: 10px;">
               <div class="card">
                   <div class="card-header">
-                      <a href="#" class="tit f-ff2 f-tdn">个人动态</a>
+                      <a href="{{ route('statuses.show', $user->id) }}" class="tit f-ff2 f-tdn">个人动态</a>
                   </div>
 
                   <div class="card-body">

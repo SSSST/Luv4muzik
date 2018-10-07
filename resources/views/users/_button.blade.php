@@ -12,6 +12,10 @@
 @else
     <a href="{{ route('musicians.show', $user->musician) }}" class="btn btn-secondary my-2">音乐人主页</a>
 @endif
+<!-- 关注/取关 -->
+@if(Auth::check() && Auth::user()->id !== $user->id)
+    @include('users._follow_form')
+@endif
 
 <!-- Modal -->
 <div class="modal fade" id="updateBrief" role="dialog" tabindex="-1"aria-labelledby="updateBriefLabel" aria-hidden="true">

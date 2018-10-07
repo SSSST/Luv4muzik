@@ -1,5 +1,5 @@
 @extends('layouts.app')
-@section('title', '所有动态')
+@section('title', '所有关注人动态')
 
 @section('content')
 <div class="container">
@@ -8,7 +8,7 @@
             <div class="card">
                 <div class="card-header">
                     <br>
-                    <h3>所有动态</h3>
+                    <h3>所有关注人动态</h3>
                     <br>
                     @include('statuses._tabs')
                     <hr>

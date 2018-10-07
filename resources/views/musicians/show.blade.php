@@ -2,7 +2,6 @@
 @section('title', $musician->name)
 
 @section('content')
-<link href="{{ asset('css/profiles.css') }}" rel="stylesheet">
 
 <!-- 音乐人信息 -->
 <div class="container">

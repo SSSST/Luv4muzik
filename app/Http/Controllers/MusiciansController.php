@@ -72,6 +72,6 @@ class MusiciansController extends Controller
     {
         $songs = Song::where('musician_id', '=', $musician->id)->orderBy('created_at')->paginate(10);
 
-        return view('musicians.showSongs', compact('songs'));
+        return view('musicians.showSongs', compact('songs','musician'));
     }
 }

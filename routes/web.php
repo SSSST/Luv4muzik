@@ -15,6 +15,10 @@ Route::get('/', 'HomeController@index')->name('home');//主页
     Route::get('/users/{user}/recommend-songs', 'UsersController@recommendSongs')->name('users.recommendSongs');//用户的推荐目录
     Route::get('/users/{user}/musicians', 'UsersController@musician')->name('users.musician');//成为音乐人
     Route::post('/users/{user}/musicians/store', 'UsersController@musicianStore')->name('users.musicianStore');//成为音乐人
+    Route::get('/users/{user}/followings', 'UsersController@followings')->name('users.followings');//查看关注的人
+    Route::get('/users/{user}/followers', 'UsersController@followers')->name('users.followers');//查看粉丝
+    Route::get('/users/follow/{user}', 'FollowersController@store')->name('followers.store');//关注
+    Route::get('/users/unfollow/{user}', 'FollowersController@destroy')->name('followers.destroy');//取关
     // Route::delete('/users/{user}', 'UsersController@destroy')->name('users.destroy');
 }
 
@@ -47,6 +51,8 @@ Route::get('/', 'HomeController@index')->name('home');//主页
 //动态
 {
     Route::get('/statuses/index', 'StatusesController@index')->name('statuses.index');//所有动态
+    Route::get('/statuses/followings', 'StatusesController@followings')->name('statuses.followings');//所有关注人动态
+    Route::get('/statuses/{user}/show', 'StatusesController@show')->name('statuses.show');//个人全部动态
     Route::post('/statuses', 'StatusesController@store')->name('statuses.store');//保存动态
     Route::delete('/statuses/{status}', 'StatusesController@destroy')->name('statuses.destroy');//删除动态
 }

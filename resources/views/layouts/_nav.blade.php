@@ -11,7 +11,11 @@
             <!-- Left Side Of Navbar -->
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ route('statuses.index') }}">{{ __('动态') }}</a>
+                    @if(Auth::check())
+                        <a class="nav-link" href="{{ route('statuses.followings') }}">{{ __('动态') }}</a>
+                    @else
+                        <a class="nav-link" href="{{ route('statuses.index') }}">{{ __('动态') }}</a>
+                    @endif
                 </li>
             </ul>
 

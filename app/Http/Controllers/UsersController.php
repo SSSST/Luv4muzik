@@ -13,7 +13,9 @@ class UsersController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('auth')->except(['show', 'index', 'recommendSongs']);//非登录可见
+        $this->middleware('auth')->except([
+            'show', 'index', 'recommendSongs', 'followers', 'followings'
+        ]);//非登录可见
     }
 
     public function show(User $user)//展示个人主页
@@ -116,6 +118,22 @@ class UsersController extends Controller
     {
         $recommend_songs = RecommendSong::where('user_id', '=', $user->id)->orderBy('created_at')->paginate(10);
 
-        return view('users.recommendSongs', compact('recommend_songs'));
+        return view('users.recommendSongs', compact('recommend_songs', 'user'));
+    }
+
+    public function followers(User $user)//查看粉丝
+    {
+        $users = $user->followers()->paginate(10);
+        $title = "粉丝列表";
+
+        return view('users.show_follow', compact('users', 'title', 'user'));
+    }
+
+    public function followings(User $user)//查看关注的人
+    {
+        $users = $user->followings()->paginate(10);
+        $title = "关注人列表";
+
+        return view('users.show_follow', compact('users', 'title', 'user'));
     }
 }
